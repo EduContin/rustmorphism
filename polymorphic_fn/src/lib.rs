@@ -58,7 +58,7 @@ impl Parse for PolymorphicFnInput {
 ///
 /// # Syntax
 ///
-/// ```rust
+/// ```text
 /// polymorphic_fn! {
 ///     [vis] fn name([args]) -> return_type {
 ///         { implementation1 },

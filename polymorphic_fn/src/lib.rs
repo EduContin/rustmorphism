@@ -7,7 +7,7 @@ use std::collections::hash_map::DefaultHasher;
 use syn::{
     parse::{Parse, ParseStream},
     punctuated::Punctuated,
-    token, Block, FnArg, Ident, Token, Type, Visibility,
+    Block, FnArg, Ident, Token, Type, Visibility,
 };
 
 struct PolymorphicFnInput {

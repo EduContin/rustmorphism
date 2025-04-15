@@ -1,12 +1,12 @@
 [package]
-name = "polymorphic_fn"
+name = "rustmorphism"
 version = "0.1.0"
 edition = "2021"
 description = "A Rust macro for creating functions with multiple implementations that are deterministically selected at compile-time"
 authors = ["Your Name <your.email@example.com>"]
 license = "MIT"
-repository = "https://github.com/yourusername/polymorphic_fn"
-documentation = "https://docs.rs/polymorphic_fn"
+repository = "https://github.com/yourusername/rustmorphism"
+documentation = "https://docs.rs/rustmorphism"
 readme = "README.md"
 keywords = ["macro", "polymorphism", "proc-macro", "compile-time"]
 categories = ["development-tools", "rust-patterns"]

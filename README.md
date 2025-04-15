@@ -1,7 +1,7 @@
-# polymorphic_fn
+# rustmorphism
 
-[![Crates.io](https://img.shields.io/crates/v/polymorphic_fn.svg)](https://crates.io/crates/polymorphic_fn)
-[![Documentation](https://docs.rs/polymorphic_fn/badge.svg)](https://docs.rs/polymorphic_fn)
+[![Crates.io](https://img.shields.io/crates/v/rustmorphism.svg)](https://crates.io/crates/rustmorphism)
+[![Documentation](https://docs.rs/rustmorphism/badge.svg)](https://docs.rs/rustmorphism)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 A Rust procedural macro that enables functions with multiple implementations, where one is deterministically selected at compile-time.
@@ -20,7 +20,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-polymorphic_fn = "0.1.0"
+rustmorphism = "0.1.0"
 ```
 
 ## Usage
@@ -28,9 +28,9 @@ polymorphic_fn = "0.1.0"
 ### Basic Example
 
 ```rust
-use polymorphic_fn::polymorphic_fn;
+use rustmorphism::polymorphic_fn;
 
-polymorphic_fn! {
+rustmorphism! {
     pub fn calculate(x: i32) -> i32 {
         { x + 1 },         // Implementation 1
         { x * 2 },         // Implementation 2
@@ -49,7 +49,7 @@ fn main() {
 #### Binary Size Optimization
 
 ```rust
-use polymorphic_fn::polymorphic_fn;
+use rustmorphism::polymorphic_fn;
 
 // Define alternative implementations with different size characteristics
 fn small_implementation(data: &[u8]) -> u64 {
@@ -66,7 +66,7 @@ fn large_implementation(data: &[u8]) -> u64 {
         .sum()
 }
 
-polymorphic_fn! {
+rustmorphism! {
     pub fn process_data(data: &[u8]) -> u64 {
         { small_implementation(data) },
         { large_implementation(data) }
@@ -77,9 +77,9 @@ polymorphic_fn! {
 #### Implementation A/B Testing
 
 ```rust
-use polymorphic_fn::polymorphic_fn;
+use rustmorphism::polymorphic_fn;
 
-polymorphic_fn! {
+rustmorphism! {
     pub fn sort_algorithm<T: Ord + Copy>(data: &mut [T]) {
         { 
             // Implementation 1: Quick sort
@@ -101,7 +101,7 @@ polymorphic_fn! {
 
 ## How It Works
 
-The `polymorphic_fn` macro uses compile-time hashing to deterministically select one implementation from the provided alternatives. The selection is based on:
+The `rustmorphism` macro uses compile-time hashing to deterministically select one implementation from the provided alternatives. The selection is based on:
 
 1. The function name
 2. Build timestamp

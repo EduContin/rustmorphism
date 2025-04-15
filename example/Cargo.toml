@@ -5,4 +5,4 @@ edition = "2021"
 build = "build.rs"
 
 [dependencies]
-polymorphic_fn = { path = "../polymorphic_fn" }
+rustmorphism = { path = ".." }

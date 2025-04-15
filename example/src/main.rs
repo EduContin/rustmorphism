@@ -1,4 +1,4 @@
-use polymorphic_fn::polymorphic_fn;
+use rustmorphism::polymorphic_fn;
 
 // Small implementation helper
 #[inline(never)]

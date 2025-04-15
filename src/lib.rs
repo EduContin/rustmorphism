@@ -69,7 +69,7 @@ impl Parse for PolymorphicFnInput {
 /// # Example
 ///
 /// ```rust
-/// use polymorphic_fn::polymorphic_fn;
+/// use rustmorphism::polymorphic_fn;
 ///
 /// polymorphic_fn! {
 ///     pub fn compute(x: i32) -> i32 {
@@ -79,7 +79,9 @@ impl Parse for PolymorphicFnInput {
 ///     }
 /// }
 ///
-/// println!("Result: {}", compute(5));
+/// fn main() {
+///     println!("Result: {}", compute(5));
+/// }
 /// ```
 #[proc_macro]
 pub fn polymorphic_fn(input: TokenStream) -> TokenStream {

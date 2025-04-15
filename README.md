@@ -3,7 +3,7 @@
 [![Crates.io](https://img.shields.io/crates/v/rustmorphism.svg)](https://crates.io/crates/rustmorphism)
 [![Documentation](https://docs.rs/rustmorphism/badge.svg)](https://docs.rs/rustmorphism)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![CI](https://github.com/yourusername/rustmorphism/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/rustmorphism/actions)
+[![CI](https://github.com/EduContin/rustmorphism/actions/workflows/ci.yml/badge.svg)](https://github.com/EduContin/rustmorphism/actions)
 
 > **Compile-time polymorphism for Rust functions: deterministic, zero-cost, and ergonomic.**
 
@@ -193,7 +193,7 @@ A: The selection is deterministic but based on build metadata. For full control,
 ## Contributing
 
 Contributions, issues, and feature requests are welcome!  
-Feel free to check the [issues page](https://github.com/yourusername/rustmorphism/issues) or submit a pull request.
+Feel free to check the [issues page](https://github.com/EduContin/rustmorphism/issues) or submit a pull request.
 
 ---
 
@@ -207,4 +207,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 - [API Documentation](https://docs.rs/rustmorphism)
 - [Crates.io](https://crates.io/crates/rustmorphism)
-- [Issue Tracker](https://github.com/yourusername/rustmorphism/issues) 
+- [Issue Tracker](https://github.com/EduContin/rustmorphism/issues) 

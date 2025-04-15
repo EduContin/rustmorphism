@@ -77,6 +77,8 @@ impl Parse for PolymorphicFnInput {
 /// # Example
 ///
 /// ```rust
+/// use polymorphic_fn::polymorphic_fn;
+///
 /// polymorphic_fn! {
 ///     pub fn compute(x: i32) -> i32 {
 ///         { x + 1 },

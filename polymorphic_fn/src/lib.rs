@@ -84,9 +84,7 @@ impl Parse for PolymorphicFnInput {
 #[proc_macro]
 pub fn polymorphic_fn(input: TokenStream) -> TokenStream {
     let input = syn::parse_macro_input!(input as PolymorphicFnInput);
-    
     let implementations: Vec<&Block> = input.implementations.iter().collect();
-    
     if implementations.is_empty() {
         return syn::Error::new_spanned(
             &input.name,
@@ -95,21 +93,16 @@ pub fn polymorphic_fn(input: TokenStream) -> TokenStream {
         .to_compile_error()
         .into();
     }
-    
     let selected_index = deterministic_selection(&input.name, implementations.len());
-    
     let selected_block = implementations[selected_index];
-    
     let vis = &input.vis;
     let fn_token = &input.fn_token;
     let name = &input.name;
     let inputs = &input.inputs;
     let output = &input.output;
-    
     let output = quote! {
         #vis #fn_token #name(#inputs) -> #output #selected_block
     };
-    
     output.into()
 }
 
@@ -117,37 +110,29 @@ pub fn polymorphic_fn(input: TokenStream) -> TokenStream {
 fn deterministic_selection(name: &Ident, count: usize) -> usize {
     // Create a hasher for deterministic selection
     let mut hasher = DefaultHasher::new();
-    
     // Hash the function name
     name.to_string().hash(&mut hasher);
-    
     // Use various environment variables for entropy
     if let Ok(timestamp) = std::env::var("BUILD_TIMESTAMP") {
         timestamp.hash(&mut hasher);
     }
-    
     if let Ok(package) = std::env::var("CARGO_PKG_NAME") {
         package.hash(&mut hasher);
     }
-    
     if let Ok(version) = std::env::var("CARGO_PKG_VERSION") {
         version.hash(&mut hasher);
     }
-    
     if let Ok(target) = std::env::var("TARGET") {
         target.hash(&mut hasher);
     }
-    
     if let Ok(profile) = std::env::var("PROFILE") {
         profile.hash(&mut hasher);
     }
-    
     // If we need more entropy, we can use a counter that increments on every build
     // through the build.rs mechanism
     if let Ok(counter) = std::env::var("BUILD_COUNTER") {
         counter.hash(&mut hasher);
     }
-    
     // Get the hash value and select an implementation
     let hash = hasher.finish();
     (hash as usize) % count

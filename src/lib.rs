@@ -79,9 +79,7 @@ impl Parse for PolymorphicFnInput {
 ///     }
 /// }
 ///
-/// fn main() {
-///     println!("Result: {}", compute(5));
-/// }
+/// println!("Result: {}", compute(5));
 /// ```
 #[proc_macro]
 pub fn polymorphic_fn(input: TokenStream) -> TokenStream {

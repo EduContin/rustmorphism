@@ -19,6 +19,7 @@ jobs:
       - uses: Swatinem/rust-cache@v2
       - name: Run tests
         run: cargo test --verbose
+        working-directory: polymorphic_fn
 
   clippy:
     name: Clippy
@@ -31,6 +32,7 @@ jobs:
       - uses: Swatinem/rust-cache@v2
       - name: Clippy check
         run: cargo clippy -- -D warnings
+        working-directory: polymorphic_fn
 
   formatting:
     name: Formatting
@@ -42,6 +44,7 @@ jobs:
           components: rustfmt
       - name: Check formatting
         run: cargo fmt --all -- --check
+        working-directory: polymorphic_fn
 
   publish:
     name: Publish

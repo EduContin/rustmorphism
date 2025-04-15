@@ -14,11 +14,8 @@ struct PolymorphicFnInput {
     vis: Visibility,
     fn_token: Token![fn],
     name: Ident,
-    paren_token: token::Paren,
     inputs: Punctuated<FnArg, Token![,]>,
-    arrow_token: Token![->],
     output: Type,
-    brace_token: token::Brace,
     implementations: Punctuated<Block, Token![,]>,
 }
 
@@ -28,24 +25,19 @@ impl Parse for PolymorphicFnInput {
         let fn_token = input.parse()?;
         let name = input.parse()?;
         let content;
-        let paren_token = syn::parenthesized!(content in input);
+        let _paren_token = syn::parenthesized!(content in input);
         let inputs = Punctuated::parse_terminated(&content)?;
-        let arrow_token = input.parse()?;
+        let _arrow_token = input.parse::<Token![->]>()?;
         let output = input.parse()?;
         let brace_content;
-        let brace_token = syn::braced!(brace_content in input);
-        
+        let _brace_token = syn::braced!(brace_content in input);
         let implementations = Punctuated::parse_terminated(&brace_content)?;
-        
         Ok(PolymorphicFnInput {
             vis,
             fn_token,
             name,
-            paren_token,
             inputs,
-            arrow_token,
             output,
-            brace_token,
             implementations,
         })
     }
@@ -87,9 +79,7 @@ impl Parse for PolymorphicFnInput {
 ///     }
 /// }
 ///
-/// fn main() {
-///     println!("Result: {}", compute(5));
-/// }
+/// println!("Result: {}", compute(5));
 /// ```
 #[proc_macro]
 pub fn polymorphic_fn(input: TokenStream) -> TokenStream {

@@ -88,7 +88,10 @@ pub fn polymorphic_fn(input: TokenStream) -> TokenStream {
     let implementations: Vec<&Block> = input.implementations.iter().collect();
     
     if implementations.is_empty() {
-        return syn::Error::new_spanned(&input.name, "At least one implementation must be provided")
+        return syn::Error::new_spanned(
+            &input.name,
+            "At least one implementation must be provided",
+        )
         .to_compile_error()
         .into();
     }
